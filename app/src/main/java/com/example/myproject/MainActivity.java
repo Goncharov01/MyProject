@@ -1,11 +1,14 @@
 package com.example.myproject;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.DataBindingUtil;
+import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 
+import com.example.myproject.databinding.ActivityMainBinding;
 import com.example.myproject.retrofit.BookApi;
 import com.example.myproject.retrofit.ModelBook;
 import com.example.myproject.retrofit.RetrofitClient;
@@ -20,6 +23,7 @@ import io.reactivex.schedulers.Schedulers;
 
 public class MainActivity extends AppCompatActivity {
 
+    private ActivityMainBinding binding;
 
     Disposable disposable = null;
 
@@ -35,9 +39,12 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
 
-        initRecyclerView();
+        adapterRecycler = new AdapterRecycler(this, books);
+        binding.setMyAdapter(adapterRecycler);
+
+//        initRecyclerView();
 
         disposable = getApi().getBooks()
                 .subscribeOn(Schedulers.io())
@@ -45,12 +52,11 @@ public class MainActivity extends AppCompatActivity {
                 .subscribe(list -> adapterRecycler.onChange(list));
     }
 
-    public void initRecyclerView(){
+    public void initRecyclerView() {
 
         recyclerView = findViewById(R.id.list);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        adapterRecycler = new AdapterRecycler(getApplicationContext(),books);
-//        recyclerView.setItemAnimator(new DefaultItemAnimator());
+        adapterRecycler = new AdapterRecycler(getApplicationContext(), books);
         recyclerView.setAdapter(adapterRecycler);
 
     }

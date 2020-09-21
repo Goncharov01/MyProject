@@ -21,7 +21,7 @@ public class RetrofitClient {
         } else return retrofit;
     }
 
-    public static BookApi getApi(){
+    public static BookApi getApi() {
         return getRetrofit().create(BookApi.class);
     }
 
