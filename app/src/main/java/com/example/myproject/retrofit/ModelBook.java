@@ -12,6 +12,14 @@ public class ModelBook {
 
     int published;
 
+    public ModelBook(int id, String title, String author, String description, int published) {
+        this.id = id;
+        this.title = title;
+        this.author = author;
+        this.description = description;
+        this.published = published;
+    }
+
     public int getId() {
         return id;
     }
