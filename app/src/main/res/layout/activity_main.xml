@@ -9,6 +9,10 @@
         <variable
             name="myAdapter"
             type="com.example.myproject.AdapterRecycler" />
+
+        <variable
+            name="viewModel"
+            type="com.example.myproject.MainViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -31,13 +35,56 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/list"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="370dp"
             android:adapter="@{myAdapter}"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.113" />
+
+        <Button
+            android:id="@+id/btn_addBook"
+            android:layout_width="102dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:onClick="@{() -> viewModel.addBooks()}"
+            android:text="Add Book"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/list" />
+
+        <EditText
+            android:id="@+id/editTitle"
+            android:hint="title"
+            android:text="@={viewModel.titleLive}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/list" />
+
+        <EditText
+            android:id="@+id/editAuthor"
+            android:hint="author"
+            android:text="@={viewModel.authorLive}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editTitle" />
+
+        <Button
+            android:id="@+id/btn_show"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ShowBook"
+            android:onClick="@{() -> viewModel.showBook()}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_addBook" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

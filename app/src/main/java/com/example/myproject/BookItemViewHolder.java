@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myproject.databinding.TaskListItemBinding;
 
+
 public class BookItemViewHolder extends RecyclerView.ViewHolder {
 
     TaskListItemBinding binding;
