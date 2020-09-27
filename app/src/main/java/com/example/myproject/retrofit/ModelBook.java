@@ -20,6 +20,14 @@ public class ModelBook {
         this.published = published;
     }
 
+    public ModelBook(String title, String author) {
+        this.title = title;
+        this.author = author;
+    }
+
+    public ModelBook() {
+    }
+
     public int getId() {
         return id;
     }

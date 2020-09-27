@@ -2,31 +2,23 @@ package com.example.myproject;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
-import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 
 import com.example.myproject.databinding.ActivityMainBinding;
-import com.example.myproject.retrofit.BookApi;
 import com.example.myproject.retrofit.ModelBook;
-import com.example.myproject.retrofit.RetrofitClient;
 
 import java.util.ArrayList;
 import java.util.List;
-
-
 
 public class MainActivity extends AppCompatActivity {
 
     private ActivityMainBinding binding;
 
     List<ModelBook> books = new ArrayList<>();
-
-    RecyclerView recyclerView;
     AdapterRecycler adapterRecycler;
     MainViewModel mainViewModel;
 
@@ -36,22 +28,20 @@ public class MainActivity extends AppCompatActivity {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
         binding.setLifecycleOwner(this);
 
-        mainViewModel = new MainViewModel();
+        mainViewModel = ViewModelProviders.of(this).get(MainViewModel.class);
         adapterRecycler = new AdapterRecycler(this, books);
         binding.setMyAdapter(adapterRecycler);
         binding.setViewModel(mainViewModel);
 
-//        initRecyclerView();
+//      Достаем liveData из класса VieModel
+        MutableLiveData<List<ModelBook>> listBook = mainViewModel.books;
 
-    }
-
-    public void initRecyclerView() {
-
-        recyclerView = findViewById(R.id.list);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        adapterRecycler = new AdapterRecycler(getApplicationContext(), books);
-        recyclerView.setAdapter(adapterRecycler);
-
+        listBook.observe(this, new Observer<List<ModelBook>>() {
+            @Override
+            public void onChanged(List<ModelBook> modelBooks) {
+                adapterRecycler.onChange(modelBooks);
+            }
+        });
     }
 
 }
