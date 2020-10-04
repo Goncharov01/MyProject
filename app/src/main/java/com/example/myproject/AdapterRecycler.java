@@ -1,6 +1,5 @@
 package com.example.myproject;
 
-import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
@@ -8,6 +7,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myproject.databinding.TaskListItemBinding;
+import com.example.myproject.retrofit.DeleteListener;
 import com.example.myproject.retrofit.ModelBook;
 
 import java.util.ArrayList;
@@ -15,11 +15,11 @@ import java.util.List;
 
 public class AdapterRecycler extends RecyclerView.Adapter<BookItemViewHolder> {
 
-    Context context;
+    DeleteListener deleteListener;
     List<ModelBook> bookList = new ArrayList<>();
 
-    public AdapterRecycler(Context context, List<ModelBook> bookList) {
-        this.context = context;
+    public AdapterRecycler(DeleteListener deleteListener, List<ModelBook> bookList) {
+        this.deleteListener = deleteListener;
         this.bookList = bookList;
     }
 
@@ -28,7 +28,7 @@ public class AdapterRecycler extends RecyclerView.Adapter<BookItemViewHolder> {
     public BookItemViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
         TaskListItemBinding binding = TaskListItemBinding.inflate(inflater, parent, false);
-        return new BookItemViewHolder(binding.getRoot());
+        return new BookItemViewHolder(binding.getRoot(), deleteListener);
     }
 
     @Override

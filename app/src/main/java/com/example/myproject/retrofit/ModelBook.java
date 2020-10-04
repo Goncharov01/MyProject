@@ -25,6 +25,19 @@ public class ModelBook {
         this.author = author;
     }
 
+    public ModelBook(String title, String author, String description) {
+        this.title = title;
+        this.author = author;
+        this.description = description;
+    }
+
+    public ModelBook(String title, String author, String description, int published) {
+        this.title = title;
+        this.author = author;
+        this.description = description;
+        this.published = published;
+    }
+
     public ModelBook() {
     }
 
@@ -66,5 +79,17 @@ public class ModelBook {
 
     public void setPublished(int published) {
         this.published = published;
+    }
+
+
+    @Override
+    public String toString() {
+        return "ModelBook{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", author='" + author + '\'' +
+                ", description='" + description + '\'' +
+                ", published=" + published +
+                '}';
     }
 }

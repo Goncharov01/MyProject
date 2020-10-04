@@ -13,6 +13,7 @@
         <variable
             name="viewModel"
             type="com.example.myproject.MainViewModel" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -56,24 +57,24 @@
 
         <EditText
             android:id="@+id/editTitle"
-            android:hint="title"
-            android:text="@={viewModel.titleLive}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:ems="10"
+            android:hint="Title"
             android:inputType="textPersonName"
+            android:text="@={viewModel.titleLive}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/list" />
 
         <EditText
             android:id="@+id/editAuthor"
-            android:hint="author"
-            android:text="@={viewModel.authorLive}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="10"
+            android:hint="Author"
             android:inputType="textPersonName"
+            android:text="@={viewModel.authorLive}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/editTitle" />
 
@@ -81,10 +82,21 @@
             android:id="@+id/btn_show"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="ShowBook"
             android:onClick="@{() -> viewModel.showBook()}"
+            android:text="ShowBook"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/btn_addBook" />
+
+        <EditText
+            android:id="@+id/editText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Description"
+            android:inputType="textPersonName"
+            android:text="@={viewModel.descriptionLive}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editAuthor" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

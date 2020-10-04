@@ -9,12 +9,13 @@ import androidx.lifecycle.ViewModelProviders;
 import android.os.Bundle;
 
 import com.example.myproject.databinding.ActivityMainBinding;
+import com.example.myproject.retrofit.DeleteListener;
 import com.example.myproject.retrofit.ModelBook;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements DeleteListener {
 
     private ActivityMainBinding binding;
 
@@ -44,4 +45,15 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    @Override
+    public void delete(int i) {
+        mainViewModel.delete(i);
+
+    }
 }
+
+
+
+
+
+

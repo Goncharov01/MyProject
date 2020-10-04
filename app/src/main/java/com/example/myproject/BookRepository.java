@@ -7,6 +7,7 @@ import com.example.myproject.retrofit.RetrofitClient;
 import java.util.ArrayList;
 
 import io.reactivex.Observable;
+import okhttp3.ResponseBody;
 
 public class BookRepository {
 
@@ -22,6 +23,11 @@ public class BookRepository {
 
     public Observable<ModelBook> addBooks(ModelBook modelBook) {
         return getApi().addBooks(modelBook);
+
+    }
+
+    public Observable<ResponseBody> deleteBooks(int i) {
+        return getApi().deleteBooks(i);
 
     }
 
