@@ -63,7 +63,13 @@ public class MainViewModel extends ViewModel {
         bookRepository.deleteBooks(i)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(list -> System.out.println());
+                .subscribe(
+                        list -> System.out.println(),
+                        e -> System.out.println("ERROR" + e),
+                        () -> System.out.println("OK")
+                );
+
+        showBook();
 
         System.out.println("delete" + i);
 

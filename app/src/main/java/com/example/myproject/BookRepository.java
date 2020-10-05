@@ -7,6 +7,7 @@ import com.example.myproject.retrofit.RetrofitClient;
 import java.util.ArrayList;
 
 import io.reactivex.Observable;
+import io.reactivex.Single;
 import okhttp3.ResponseBody;
 
 public class BookRepository {
