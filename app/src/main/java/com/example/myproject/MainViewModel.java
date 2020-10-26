@@ -7,11 +7,17 @@ import com.example.myproject.retrofit.ModelBook;
 
 import java.util.List;
 
+import javax.inject.Inject;
+
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
 
 
 public class MainViewModel extends ViewModel {
+
+
+    public MainViewModel() {
+    }
 
     MutableLiveData<List<ModelBook>> books = new MutableLiveData<>();
     BookRepository bookRepository = new BookRepository();

@@ -15,22 +15,28 @@ import com.example.myproject.retrofit.ModelBook;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.inject.Inject;
+
+import dagger.android.AndroidInjection;
+
 public class MainActivity extends AppCompatActivity implements DeleteListener {
 
     private ActivityMainBinding binding;
 
     List<ModelBook> books = new ArrayList<>();
+    @Inject
     AdapterRecycler adapterRecycler;
     MainViewModel mainViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        AndroidInjection.inject(this);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
         binding.setLifecycleOwner(this);
 
         mainViewModel = ViewModelProviders.of(this).get(MainViewModel.class);
-        adapterRecycler = new AdapterRecycler(this, books);
+//        adapterRecycler = new AdapterRecycler(this, books);
         binding.setMyAdapter(adapterRecycler);
         binding.setViewModel(mainViewModel);
 
@@ -50,6 +56,7 @@ public class MainActivity extends AppCompatActivity implements DeleteListener {
         mainViewModel.delete(i);
 
     }
+    
 }
 
 

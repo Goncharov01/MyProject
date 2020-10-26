@@ -13,14 +13,18 @@ import com.example.myproject.retrofit.ModelBook;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AdapterRecycler extends RecyclerView.Adapter<BookItemViewHolder> {
+import javax.inject.Inject;
 
+
+public class AdapterRecycler extends RecyclerView.Adapter<BookItemViewHolder> {
+    @Inject
     DeleteListener deleteListener;
     List<ModelBook> bookList = new ArrayList<>();
 
-    public AdapterRecycler(DeleteListener deleteListener, List<ModelBook> bookList) {
-        this.deleteListener = deleteListener;
-        this.bookList = bookList;
+    @Inject
+    public AdapterRecycler() {
+//        this.deleteListener = deleteListener;
+
     }
 
     @NonNull
