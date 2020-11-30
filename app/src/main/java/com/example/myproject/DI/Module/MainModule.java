@@ -1,9 +1,5 @@
 package com.example.myproject.DI.Module;
 
-import androidx.lifecycle.ViewModelProviders;
-
-import com.example.myproject.MainActivity;
-import com.example.myproject.MainViewModel;
 import com.example.myproject.retrofit.ModelBook;
 
 import javax.inject.Singleton;

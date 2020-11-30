@@ -36,7 +36,6 @@ public class MainActivity extends AppCompatActivity implements DeleteListener {
         binding.setLifecycleOwner(this);
 
         mainViewModel = ViewModelProviders.of(this).get(MainViewModel.class);
-//        adapterRecycler = new AdapterRecycler(this, books);
         binding.setMyAdapter(adapterRecycler);
         binding.setViewModel(mainViewModel);
 

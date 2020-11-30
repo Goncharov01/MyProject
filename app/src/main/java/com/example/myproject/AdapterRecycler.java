@@ -4,6 +4,7 @@ import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myproject.databinding.TaskListItemBinding;
@@ -47,9 +48,15 @@ public class AdapterRecycler extends RecyclerView.Adapter<BookItemViewHolder> {
     }
 
     public void onChange(List<ModelBook> books) {
+
+        BookDiffUtil bookDiffUtil = new BookDiffUtil(this.bookList, books);
+        DiffUtil.DiffResult booksDiffResult = DiffUtil.calculateDiff(bookDiffUtil);
+
+        booksDiffResult.dispatchUpdatesTo(this);
+
         bookList.clear();
         bookList.addAll(books);
-        notifyDataSetChanged();
+
     }
 
 }
