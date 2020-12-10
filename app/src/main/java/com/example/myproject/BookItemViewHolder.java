@@ -29,7 +29,7 @@ public class BookItemViewHolder extends RecyclerView.ViewHolder {
                 new View.OnLongClickListener() {
                     @Override
                     public boolean onLongClick(View view) {
-                        Toast.makeText(view.getContext(), "Click", Toast.LENGTH_LONG).show();
+                        Toast.makeText(view.getContext(), "Delete book", Toast.LENGTH_LONG).show();
                         deleteListener.delete(((ModelBook) obj).getId());
 
                         return false;

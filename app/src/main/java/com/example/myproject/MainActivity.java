@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity implements DeleteListener {
         mainViewModel.delete(i);
 
     }
-    
+
 }
 
 

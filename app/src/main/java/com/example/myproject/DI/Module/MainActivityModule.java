@@ -11,5 +11,4 @@ public interface MainActivityModule {
     @ContributesAndroidInjector(modules = MainActivityModules.class)
     abstract MainActivity contributesMainActivity();
 
-
 }

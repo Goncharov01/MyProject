@@ -40,8 +40,10 @@ public class BookDiffUtil extends DiffUtil.Callback {
         ModelBook modelBookNew = newList.get(newItemPosition);
 
         return modelBookOld.getAuthor().equals(modelBookNew.getAuthor())
-                & modelBookOld.getTitle().equals(modelBookNew.getTitle())
-                & modelBookOld.getDescription().equals(modelBookNew.getDescription());
-
+                && modelBookOld.getTitle() == modelBookNew.getTitle()
+                && modelBookOld.getDescription() == modelBookNew.getDescription();
     }
+
 }
+
+

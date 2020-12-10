@@ -28,5 +28,4 @@ public class App extends Application implements HasAndroidInjector {
         DaggerMyComponent.builder().application(this).build().inject(this);
     }
 
-
 }

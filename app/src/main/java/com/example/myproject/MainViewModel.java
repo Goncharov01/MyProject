@@ -29,6 +29,7 @@ public class MainViewModel extends ViewModel {
     public MutableLiveData<String> description = new MutableLiveData<>();
 
     public void addBooks() {
+
         title.setValue(titleLive.getValue());
         author.setValue(authorLive.getValue());
         description.setValue(descriptionLive.getValue());
@@ -51,6 +52,7 @@ public class MainViewModel extends ViewModel {
     }
 
     public void showBook() {
+
         System.out.println("!!!!!!!!!!!!!!!!!!!");
         bookRepository.showBook()
                 .subscribeOn(Schedulers.io())
@@ -75,7 +77,7 @@ public class MainViewModel extends ViewModel {
 
         showBook();
 
-        System.out.println("delete" + i);
+        System.out.println("Delete book" + i);
 
     }
 }

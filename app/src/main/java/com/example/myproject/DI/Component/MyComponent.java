@@ -16,11 +16,13 @@ import dagger.android.AndroidInjectionModule;
 @Component(modules = {AndroidInjectionModule.class, MainActivityModule.class, MainModule.class})
 public interface MyComponent {
     @Component.Builder
-    interface Builder{
+    interface Builder {
         @BindsInstance
         Builder application(Application application);
+
         MyComponent build();
     }
+
     void inject(App app);
 
 }

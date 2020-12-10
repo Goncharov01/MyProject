@@ -11,7 +11,7 @@ import dagger.Provides;
 public class MainModule {
     @Singleton
     @Provides
-    public ModelBook getModel(){
+    public ModelBook getModel() {
         return new ModelBook();
     }
 

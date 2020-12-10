@@ -24,8 +24,7 @@ public class AdapterRecycler extends RecyclerView.Adapter<BookItemViewHolder> {
 
     @Inject
     public AdapterRecycler() {
-//        this.deleteListener = deleteListener;
-
+//       this.deleteListener = deleteListener;
     }
 
     @NonNull
